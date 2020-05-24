@@ -1,0 +1,36 @@
+import java.util.*;
+import java.io.*;
+import java.lang.*;
+public class villege {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        for (int k = 0; k < t; k++) {
+            int n = sc.nextInt();
+            long x1, x2, s;
+            long a[] = new long[n];
+            for (int i = 0; i < n; i++) {
+                a[i] = sc.nextLong();
+            }
+            Arrays.sort(a);
+            s = 0;
+            while (n > 3) {
+                x1 = a[0] + 2 * a[1] + a[n - 1];
+
+                x2 = 2 * a[0] + a[n - 2] + a[n - 1];
+
+                s = s + Math.min(x1, x2);
+
+                n = n - 2;
+            }
+            if (n == 3)
+                s = s + a[0] + a[1] + a[2];
+            else if (n == 2)
+                s = s + a[1];
+            else
+                s = s + a[0];
+
+            System.out.println(s);
+        }
+    }
+}
